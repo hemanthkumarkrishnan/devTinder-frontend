@@ -12,18 +12,20 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const handleLogout = async () => {
-    try{
+    try {
       await axios.post(`${BASE_URL}/logout`, {}, { withCredentials: true });
       dispatch(removeUser());
       Navigate("/login");
     } catch (error) {
       console.error("Error logging out:", error);
     }
-  }
+  };
   return (
-    <div className="navbar bg-base-300 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm ">
       <div className="flex-1">
-        <Link to="/"     className="btn btn-ghost text-xl">👩‍💻DevTinder</Link>
+        <Link to="/" className="btn btn-ghost text-xl">
+          👩‍💻DevTinder
+        </Link>
       </div>
       {user && (
         <div className="flex gap-2 justify-center items-center">
@@ -49,7 +51,10 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to={"/connections"}>Connections</Link>
+              </li>
+              <li>
+                <Link to={"/requests"}>Connection Requests</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
