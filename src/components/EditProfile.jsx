@@ -11,7 +11,7 @@ const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [gender, setGender] = useState(user.gender || "");
-  const [age, setAge] = useState(user.age ||"");
+  const [age, setAge] = useState(user.age || "");
   const [about, setAbout] = useState(user.about || "");
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [error, setError] = useState("");
@@ -45,59 +45,59 @@ const EditProfile = ({ user }) => {
   };
   return (
     <>
-      <div className="flex justify-center my-10 ">
-        <div className="flex justify-center mx-10">
-          <div className="card bg-base-300 w-96 shadow-xl">
-            <div className="card-body">
+      <div className="flex flex-col md:flex-row justify-center items-start my-10 px-4 gap-6">
+        <div className="w-full md:w-auto">
+          <div className="card bg-base-300 w-full max-w-md md:w-96 shadow-xl">
+            <div className="card-body p-4 sm:p-6">
               <h2 className="card-title justify-center font-medium text-base">
                 Edit Profile
               </h2>
-              <div>
-                <label className="form-control w-full max-w-xs ">
+              <div className="space-y-3">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text">First Name:</span>
                   </div>
                   <input
                     type="text"
-                    className="input input-bordered w-full max-w-xs my-1 xs focus:outline-black   "
+                    className="input input-bordered w-full my-1 focus:outline-none focus:ring-0"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </label>
               </div>
               <div>
-                <label className="form-control w-full max-w-xs ">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text my-1 ">Last Name:</span>
                   </div>
                   <input
                     type="text"
-                    className="input input-bordered w-full max-w-xs  focus:outline-black"
+                    className="input input-bordered w-full focus:outline-none focus:ring-0"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                   />
                 </label>
               </div>
               <div>
-                <label className="form-control w-full max-w-xs ">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text my-1 "> Age:</span>
                   </div>
                   <input
                     type="text"
-                    className="input input-bordered w-full max-w-xs  focus:outline-black"
+                    className="input input-bordered w-full focus:outline-none focus:ring-0"
                     value={age}
                     onChange={(e) => setAge(e.target.value)}
                   />
                 </label>
               </div>
               <div>
-                <label className="form-control w-full max-w-xs ">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text my-1 ">Gender:</span>
                   </div>
                   <select
-                    className="select select-bordered w-full max-w-xs focus:outline-none focus:ring-0"
+                    className="select select-bordered w-full focus:outline-none focus:ring-0"
                     value={gender ?? ""}
                     onChange={(e) => setGender(e.target.value)}
                   >
@@ -109,25 +109,25 @@ const EditProfile = ({ user }) => {
                 </label>
               </div>
               <div>
-                <label className="form-control w-full max-w-xs ">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text my-1 ">Photo Url:</span>
                   </div>
                   <input
                     type="text"
-                    className="input input-bordered w-full max-w-xs  focus:outline-black"
+                    className="input input-bordered w-full focus:outline-none focus:ring-0"
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
                   />
                 </label>
               </div>
               <div>
-                <label className="form-control w-full max-w-xs ">
+                <label className="form-control w-full">
                   <div className="label">
                     <span className="label-text my-1 ">About:</span>
                   </div>
                   <textarea
-                    className="textarea textarea-bordered w-full max-w-xs focus:outline-none focus:ring-0"
+                    className="textarea textarea-bordered w-full focus:outline-none focus:ring-0"
                     rows={4}
                     value={about}
                     onChange={(e) => setAbout(e.target.value)}
@@ -138,7 +138,7 @@ const EditProfile = ({ user }) => {
               {error && <p className="text-red-500">{error}</p>}
               <div className="card-actions justify-center m-2">
                 <button
-                  className="btn btn-primary bg-primary p-5 font-medium "
+                  className="btn btn-primary bg-primary p-3 font-medium w-full sm:w-auto"
                   onClick={saveProfile}
                 >
                   save profile
@@ -147,9 +147,11 @@ const EditProfile = ({ user }) => {
             </div>
           </div>
         </div>
-        <UserCard
-          user={{ firstName, lastName, age, gender, photoUrl, about }}
-        />
+        <div className="w-full md:w-96 flex justify-center">
+          <UserCard
+            user={{ firstName, lastName, age, gender, photoUrl, about }}
+          />
+        </div>
       </div>
       {showToast && (
         <div className="toast toast-top toast-center">

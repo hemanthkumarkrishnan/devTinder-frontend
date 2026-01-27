@@ -49,53 +49,63 @@ const Requests = () => {
   }
 
   return (
-    <div className=" text-center my-10">
-      <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
+    <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto my-10 pb-28">
+      <h1 className="text-bold text-white text-3xl text-center mb-6">
+        Connection Requests
+      </h1>
 
-      {requests.map((connection) => {
-        const { firstName, lastName, photoUrl, about, age, gender, _id } =
-          connection.fromUserId;
+      <div className="flex flex-col gap-4">
+        {requests.map((connection) => {
+          const { firstName, lastName, photoUrl, about, age, gender, _id } =
+            connection.fromUserId;
 
-        return (
-          <div
-            className="flex justify-between items-center m-4 p-4 rounded-lg bg-base-300 full mx-auto"
-            key={_id}
-          >
-            <div>
-              <img
-                className="w-20 h-20 rounded-full "
-                alt="connection photo"
-                src={photoUrl}
-              />
+          return (
+            <div
+              className="flex flex-col sm:flex-row items-center sm:items-start justify-between m-2 p-4 rounded-lg bg-base-300 w-full shadow"
+              key={_id}
+            >
+              <div className="flex-shrink-0">
+                <img
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover"
+                  alt="connection photo"
+                  src={photoUrl}
+                />
+              </div>
+
+              <div className="text-left mt-3 sm:mt-0 sm:mx-4 flex-1">
+                <h2 className="text-lg font-bold truncate">
+                  {firstName + " " + lastName}
+                </h2>
+                {age && gender && (
+                  <p className="text-sm text-neutral-400">
+                    {age + ", " + gender}
+                  </p>
+                )}
+                <p className="mt-2 text-sm line-clamp-3">{about}</p>
+              </div>
+
+              <div className="mt-3 sm:mt-0 flex flex-col sm:flex-row items-center gap-3">
+                <button
+                  className="btn btn-primary bg-primary px-4 py-2 font-medium w-full sm:w-auto"
+                  onClick={() => {
+                    reviewRequest("accepted", connection._id);
+                  }}
+                >
+                  Accept
+                </button>
+                <button
+                  className="btn btn-secondary bg-secondary px-4 py-2 font-medium w-full sm:w-auto"
+                  onClick={() => {
+                    reviewRequest("rejected", connection._id);
+                  }}
+                >
+                  Reject
+                </button>
+              </div>
             </div>
-            <div className="text-left   mx-10 flex-grow">
-              <h2 className="text-lg font-bold">
-                {firstName + " " + lastName}
-              </h2>
-              {age && gender && <p>{age + ", " + gender}</p>}
-              <p>{about}</p>
-            </div>
-            <div>
-              <button
-                className="btn btn-primary bg-primary mx-2 p-5 font-medium"
-                onClick={() => {
-                  reviewRequest("accepted", connection._id);
-                }}
-              >
-                Accept
-              </button>
-              <button
-                className="btn btn-secondary bg-secondary mx-2 p-5 font-medium"
-                onClick={() => {
-                  reviewRequest("rejected", connection._id);
-                }}
-              >
-                Reject
-              </button>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };
