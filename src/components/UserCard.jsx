@@ -5,7 +5,7 @@ import BASE_URL from "../utils/constants";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user }) => {
-  console.log(user);
+ 
   const { firstName, lastName, age, photoUrl, gender, about, _id } = user;
   const dispatch = useDispatch();
 
