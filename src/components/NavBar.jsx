@@ -24,7 +24,7 @@ const NavBar = () => {
     <div className="navbar bg-base-300 shadow-sm px-4 sm:px-6 lg:px-8 flex-wrap">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl px-0 sm:px-2">
-          👩‍💻DevTinder
+          👩‍💻 DevTinder
         </Link>
       </div>
       {user && (
@@ -46,6 +46,9 @@ const NavBar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-40 sm:w-52 p-2 shadow"
             >
+              <li>
+              <Link to="/">feed</Link>
+              </li>
               <li>
                 <Link to="/profile" className="justify-between">
                   Profile

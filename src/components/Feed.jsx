@@ -32,7 +32,7 @@ const Feed = () => {
 
   // ensure content stays above a fixed footer on small screens by adding bottom padding
   return (
-    <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto my-10 pb-28">
+    <div className="px-4 sm:px-6 md:px-8 max-w-6xl mx-auto my-10 pb-28  ">
       {/* single card view preserved, keep layout responsive */}
       <div className="flex justify-center">
         <UserCard user={feed[0]} />

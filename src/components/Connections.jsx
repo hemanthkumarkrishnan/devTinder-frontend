@@ -4,6 +4,7 @@ import BASE_URL from "../utils/constants";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Connections = () => {
 
           return (
             <div
-              className="flex flex-col sm:flex-row m-4 p-4 rounded-lg bg-base-300"
+              className="flex   flex-col sm:flex-row m-4 p-4 rounded-lg bg-base-300"
               key={_id}
             >
               <div className="flex-shrink-0">
@@ -63,8 +64,15 @@ const Connections = () => {
                   <p className="text-sm">{age + ", " + gender}</p>
                 )}
                 <p className="text-sm">{about}</p>
-              </div>
+               
             </div>
+            <div className=" ml-auto my-auto">
+              <Link to={"/chat/"+ _id}>
+             <button className="flex btn btn-primary bg-primary p-5 font-medium " >Chat</button>
+             </Link>
+            </div>
+            
+              </div>
           );
         })}
       </div>
